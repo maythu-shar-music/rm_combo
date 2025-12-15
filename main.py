@@ -169,4 +169,4 @@ by ➜ @strawhatchannel96 ''', reply_markup=mes)
 def menu_callback(call):
 	with open("stop.stop", "w") as file:
 		pass
-bot.pollingol
+bot.polling()
