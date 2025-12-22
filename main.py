@@ -8,13 +8,13 @@ bot=telebot.TeleBot(token,parse_mode="HTML")
 @bot.message_handler(commands=["start"])
 def start(message):
 	if not str(message.chat.id) == '1318826936':
-		bot.reply_to(message, "You cannot use the bot to contact developers to purchase a bot subscription @strawhatchannel96")
+		bot.reply_to(message, "You cannot use the bot to contact developers to purchase a bot subscription @iwillgoforwardsalone")
 		return
 	bot.reply_to(message,"Send the file now")
 @bot.message_handler(content_types=["document"])
 def main(message):
 	if not str(message.chat.id) == '1318826936':
-		bot.reply_to(message, "You cannot use the bot to contact developers to purchase a bot subscription @strawhatchannel96")
+		bot.reply_to(message, "You cannot use the bot to contact developers to purchase a bot subscription @iwillgoforwardsalone")
 		return
 	dd = 0
 	live = 0
@@ -34,7 +34,7 @@ def main(message):
 				current_dir = os.getcwd()
 				for filename in os.listdir(current_dir):
 					if filename.endswith(".stop"):
-						bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text='STOP ✅\nBOT BY ➜ @strawhatchannel96')
+						bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text='STOP ✅\nBOT BY ➜ @iwillgoforwardsalone')
 						os.remove('stop.stop')
 						return
 				try: data = requests.get('https://bins.antipublic.cc/bins/'+cc[:6]).json()
@@ -111,7 +111,7 @@ by ➜ @iwillgoforwardsalone ''', reply_markup=mes)
 𝐂𝐨𝐮𝐧𝐭𝐫𝐲: <code>{country} - {country_flag}</code>
 
 𝐓𝐢𝐦𝐞: <code>1{"{:.1f}".format(execution_time)} second</code> 
-𝐁𝐨𝐭 𝐀𝐛𝐨𝐮𝐭: @strawhatchannel96'''
+𝐁𝐨𝐭 𝐀𝐛𝐨𝐮𝐭: @iwillgoforwardsalone'''
 					lowfund += 1
 					bot.reply_to(message, msg)
 					
@@ -133,7 +133,7 @@ by ➜ @iwillgoforwardsalone ''', reply_markup=mes)
 					time.sleep(5)
 	except Exception as e:
 		print(e)
-	bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text='CHECKED ✅\nBOT BY ➜ @strawhatchannel96')
+	bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text='CHECKED ✅\nBOT BY ➜ @iwillgoforwardsalone')
 @bot.callback_query_handler(func=lambda call: call.data == 'stop')
 def menu_callback(call):
 	with open("stop.stop", "w") as file:
