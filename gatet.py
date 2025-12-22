@@ -1,4 +1,5 @@
-
+import requests,re
+import random
 def Tele(ccx):
     ccx=ccx.strip()
     n = ccx.split("|")[0]
