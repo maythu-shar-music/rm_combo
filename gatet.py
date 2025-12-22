@@ -74,5 +74,5 @@ data = {
 response = requests.post('https://www.massairspace.org/wp-admin/admin-ajax.php', headers=headers, data=data)
 
 result = response.json()['message']
-	
-	return result
+
+return result
