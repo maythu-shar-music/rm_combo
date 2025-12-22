@@ -125,8 +125,7 @@ by ➜ @iwillgoforwardsalone ''', reply_markup=mes)
 𝐂𝐨𝐮𝐧𝐭𝐫𝐲: <code>{country} - {country_flag}</code>
 
 𝐓𝐢𝐦𝐞: <code>1{"{:.1f}".format(execution_time)} second</code> 
-𝐁𝐨𝐭 𝐀𝐛𝐨𝐮𝐭: @strawhatchannel96'''
-					cvv += 1
+𝐁𝐨𝐭𝐁𝐨𝐭 𝐀𝐛𝐨𝐮𝐭: @iwillgoforwardsalone'''cvv += 1
 					bot.reply_to(message, msg)
 				    	
 				else:
