@@ -72,12 +72,7 @@ def start(message):
     
     if user_id == OWNER_ID:
         # Owner menu
-        bot.reply_to(message, "👑 Owner Menu:\n\n"
-                             "/adduser - Add new user\n"
-                             "/removeuser - Remove user\n"
-                             "/listusers - List all users\n"
-                             "/stats - Check bot statistics\n\n"
-                             "Send combo file to start checking")
+        bot.reply_to(message, "Send File Now")
     elif is_user_allowed(user_id):
         # Allowed user
         bot.reply_to(message, "✅ Welcome!\n\n"
@@ -279,12 +274,13 @@ def main(message):
                     last = 'missing payment form'
                 
                 processed += 1
-                progress_msg = f'''[ϟ] ᴘʀᴏᴄᴇꜱꜱɪɴɢ : {processed}/{total}
-ϟ ᴄᴜʀʀᴇɴᴛ : {cc}
-[ϟ] ꜱᴛᴀᴛᴜꜱ : {last}
-ϟ ʜɪᴛ : {ch}
-[ϟ] ᴄᴄɴ : {ccn} | ᴄᴠᴠ : {cvv}
-[ϟ] ɪɴꜱᴜ : {lowfund} | ᴅᴇᴀᴅ : {dd}
+                progress_msg = f'''♻️ ᴘʀᴏᴄᴇꜱꜱɪɴɢ : {processed}/{total}
+💳 ᴄᴜʀʀᴇɴᴛ : {cc}
+🫧 ꜱᴛᴀᴛᴜꜱ : {last}
+🔥 ʜɪᴛ : {ch}
+🟢 ᴄᴄɴ : {ccn} | ᴄᴠᴠ : {cvv}
+😭 ɪɴꜱᴜ : {lowfund}
+🔴 ᴅᴇᴀᴅ : {dd}
 
 ϟ ʙᴏᴛ ʙʏ: @iwillgoforwardsalone'''
                 
